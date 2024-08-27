@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Page</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Create New Page</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/pages">Manage Pages</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/admin/pages/create" method="POST">
+            <label for="title">Page Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="slug">URL Slug:</label>
+            <input type="text" id="slug" name="slug" required>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="10"></textarea>
+
+            <button type="submit">Create Page</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your CMS</p>
+    </footer>
+</body>
+</html>

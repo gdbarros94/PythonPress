@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Plugins</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Plugins</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/pages">Manage Pages</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Installed Plugins</h2>
+            <ul>
+                {% for plugin in plugins %}
+                <li>{{ plugin.name }} - {{ plugin.status }}</li>
+                <form action="/admin/plugins/{{ plugin.id }}/toggle" method="POST">
+                    <button type="submit">{{ 'Deactivate' if plugin.status == 'active' else 'Activate' }}</button>
+                </form>
+                <form action="/admin/plugins/{{ plugin.id }}/delete" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your CMS</p>
+    </footer>
+</body>
+</html>
